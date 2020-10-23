@@ -48,30 +48,33 @@ void App::Render()
 	frontFaceFrameBuffer.useAsRenderTarget([this]{
 		glClearColor(0.125f, 0.25f, 0.5f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		cube.render(cubeShader, camera.GetViewProj() * glm::translate(glm::mat4(1.0f), glm::vec3(2,0,0)));
+		cube.render(cubeShader, camera.GetViewProj() * glm::translate(id, glm::vec3(2,0,0)));
 	});
 
 	backFaceFrameBuffer.useAsRenderTarget([this]{
 		glClearColor(0.5f, 0.25f, 0.2f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glCullFace(GL_FRONT);
-		cube.render(cubeShader, camera.GetViewProj() * glm::translate(glm::mat4(1.0f), glm::vec3(2,0,0)));
+		cube.render(cubeShader, camera.GetViewProj() * glm::translate(id, glm::vec3(2,0,0)));
 		glCullFace(GL_BACK);
 	});
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	quadShader.use([this](Shader &shader){
-		shader.bindUniformTexture("texImage", frontFaceFrameBuffer.getColorBuffer(0), 0);
+		shader.bindUniformTexture("frontCoords", frontFaceFrameBuffer.getColorBuffer(0), 0);
+		shader.bindUniformTexture("backCoords",  backFaceFrameBuffer.getColorBuffer(0), 0);
 		shader.bindUniformMatrix4("MVP", glm::scale(glm::translate(id, glm::vec3(-0.5f, 0, 0)), glm::vec3(0.5,1,1)));
 		quad.render(shader);
 	});
 
+	/*
 	quadShader.use([this](Shader &shader){
 		shader.bindUniformTexture("texImage", backFaceFrameBuffer.getColorBuffer(0), 0);
 		shader.bindUniformMatrix4("MVP", glm::scale(glm::translate(id, glm::vec3(0.5f, 0, 0)), glm::vec3(0.5,1,1)));
 		quad.render(shader);
 	});
+	*/
 }
 
 void App::KeyboardDown(SDL_KeyboardEvent& key)

@@ -9,6 +9,7 @@ uniform mat4 MVP;
 
 void main()
 {
-	gl_Position = MVP * vec4( vs_in_pos, 1 );
-	vs_out_col = vs_in_col;
+	vec4 v = vec4( vs_in_pos, 1 );
+	gl_Position = MVP * v;
+	vs_out_col = gl_Position.xyz / gl_Position.w;
 }

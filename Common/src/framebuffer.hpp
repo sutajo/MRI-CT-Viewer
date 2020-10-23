@@ -72,7 +72,12 @@ public:
   }
 
   GLuint getHandle(){
-        return handle;
+    return handle;
+  }
+
+  GLuint getDepthBuffer()
+  {
+    return depthBuffer;
   }
 };
 
