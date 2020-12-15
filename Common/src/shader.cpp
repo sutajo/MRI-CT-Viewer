@@ -183,6 +183,13 @@ void Shader::bindUniformTexture(const char* name, GLuint texture, GLuint unit){
   glUniform1i(location, unit);
 }
 
+void Shader::bindUniformTexture3D(const char* name, GLuint texture, GLuint unit){
+  GLuint location = glGetUniformLocation(shaderProgram, name);
+  glActiveTexture(GL_TEXTURE0 + unit);
+  glBindTexture(GL_TEXTURE_3D, texture);
+  glUniform1i(location, unit);
+}
+
 void Shader::bindAttribLocation(GLuint id, const char* name){
   glEnableVertexAttribArray(id);
   glBindAttribLocation(shaderProgram, id, name);

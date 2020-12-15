@@ -49,4 +49,19 @@ public:
   GLuint getTextureHandle();
 };
 
+
+class Texture3D{
+private:
+  GLuint handle;
+  GLuint width, height, depth;
+
+public:
+  Texture3D();
+  ~Texture3D();
+
+  void initialize(GLuint width, GLuint height, GLuint depth);
+  void setData(void* data);
+  GLuint getTextureHandle();
+};
+
 #endif

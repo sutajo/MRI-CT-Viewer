@@ -13,6 +13,7 @@
 #include "cube.hpp"
 #include "framebuffer.hpp"
 #include "quad.hpp"
+#include "texture.hpp"
 
 #include "VertexArrayObject.hpp"
 #include "BufferObject.hpp"
@@ -44,11 +45,16 @@ class App
 		Shader cubeShader{"shaders/cube.vert", "shaders/cube.frag"};
 		Cube   cube;
 		Quad   quad;
+		Shader quadSimpleShader{"shaders/quad.vert", "shaders/quad_simple.frag"};
 		Shader quadShader{"shaders/quad.vert", "shaders/quad.frag"};
+		Texture3D sphereVolume;
 
 		const GLuint bufferWidth  = InitialWindowWidth;
 		const GLuint bufferHeight = InitialWindowHeight;
 		Framebuffer frontFaceFrameBuffer {bufferWidth, bufferHeight, 1};
 		Framebuffer backFaceFrameBuffer  {bufferWidth, bufferHeight, 1};
+
+	private:
+		void InitSphereVolume();
 };
 

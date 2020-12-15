@@ -64,7 +64,7 @@ void Camera::UpdateUV(float du, float dv)
 	m_u		+= du;
 	m_v		 = glm::clamp<float>(m_v + dv, 0.1f, 3.1f);
 
-	m_at = m_eye + m_dist*glm::vec3(	cosf(m_u)*sinf(m_v), 
+	m_eye = m_at + m_dist*glm::vec3(	cosf(m_u)*sinf(m_v), 
 										cosf(m_v), 
 										sinf(m_u)*sinf(m_v) );
 

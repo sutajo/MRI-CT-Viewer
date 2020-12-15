@@ -21,25 +21,25 @@
 #include "cube.hpp"
 
 const glm::vec3 vertices[8] = {
-    {-1.0f, -1.0f,  1.0f},
-    { 1.0f, -1.0f,  1.0f},
-    {-1.0f,  1.0f,  1.0f},
+    { 0.0f,  0.0f,  1.0f},
+    { 1.0f,  0.0f,  1.0f},
+    { 0.0f,  1.0f,  1.0f},
     { 1.0f,  1.0f,  1.0f},
-    {-1.0f, -1.0f, -1.0f},
-    { 1.0f, -1.0f, -1.0f},
-    {-1.0f,  1.0f, -1.0f},
-    { 1.0f,  1.0f, -1.0f}
+    { 0.0f,  0.0f,  0.0f},
+    { 1.0f,  0.0f,  0.0f},
+    { 0.0f,  1.0f,  0.0f},
+    { 1.0f,  1.0f,  0.0f}
 };
 
 const glm::vec3 colors[8] = {
     glm::vec3(1, 0, 0),
     glm::vec3(0, 1, 0),
     glm::vec3(0, 0, 1),
-    glm::vec3(1, 1, 1),
-    glm::vec3(0, 0, 0),
-    glm::vec3(1, 0, 1),
-    glm::vec3(0, 1, 1),
-    glm::vec3(1, 1, 0)
+    glm::vec3(0, 1, 0),
+    glm::vec3(1, 0, 0),
+    glm::vec3(0, 1, 0),
+    glm::vec3(0, 0, 1),
+    glm::vec3(0, 1, 0)
 };
 
 constexpr int indexCount = 14;

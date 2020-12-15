@@ -71,7 +71,7 @@ public:
   void bindUniformFloat2(const char* name, float f1, float f2);
   void bindUniformFloat3(const char* name, float f1, float f2, float f3);
   void bindUniformTexture(const char* name, GLuint texture, GLuint unit);
-
+  void bindUniformTexture3D(const char* name, GLuint texture, GLuint unit);
   void bindUniformMatrix4(const char* name, float* m, unsigned int arraySize = 1);
   void bindUniformMatrix4(const char* name, glm::mat4 mat, unsigned int arraySize = 1);
   void bindUniformVector(const char* name, float* m, unsigned int arraySize = 1);

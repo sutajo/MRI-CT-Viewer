@@ -83,3 +83,37 @@ GLuint Texture2D::getTextureHandle(){
   return handle;
 }
 
+// Texture3D
+
+Texture3D::Texture3D(){
+}
+
+Texture3D::~Texture3D(){
+}
+
+void Texture3D::initialize(GLuint width, GLuint height, GLuint depth){
+  this->width = width;
+  this->height = height;
+  this->depth = depth;
+
+  glGenTextures(1, &handle);
+  glBindTexture(GL_TEXTURE_3D, handle);
+  glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+  glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+  glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+  glTexImage3D(GL_TEXTURE_3D, 0, GL_RED, width, height, depth, 0, GL_RED, GL_UNSIGNED_BYTE, 0);
+
+  glBindTexture(GL_TEXTURE_3D, 0);
+}
+
+void Texture3D::setData(void* data){
+  glBindTexture(GL_TEXTURE_3D, handle);
+  glTexImage3D(GL_TEXTURE_3D, 0, GL_RED, width, height, depth, 0, GL_RED, GL_UNSIGNED_BYTE, data);
+}
+
+GLuint Texture3D::getTextureHandle(){
+  return handle;
+}
+
